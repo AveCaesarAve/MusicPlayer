@@ -19,4 +19,14 @@
         <item name="android:layout_width">0dp</item>
     </style>
 
+    <style name="myToolbarStyle" parent="AppTheme">
+        <item name="android:minHeight">?attr/actionBarSize</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
 </resources>
