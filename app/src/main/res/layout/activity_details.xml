@@ -84,5 +84,4 @@
         app:srcCompat="@drawable/ic_pause" />
 
     <include layout="@layout/my_toolbar" />
-
 </android.support.constraint.ConstraintLayout>

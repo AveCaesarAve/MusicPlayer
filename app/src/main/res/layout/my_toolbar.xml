@@ -18,5 +18,4 @@
         app:titleTextColor="@color/txtColor"
 
         />
-
 </android.support.constraint.ConstraintLayout>

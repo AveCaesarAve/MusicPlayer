@@ -30,7 +30,4 @@ public class SongModel {
     public int getImageId() {
         return mCoverImgId;
     }
-
-
-
 }

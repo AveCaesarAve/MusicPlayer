@@ -43,7 +43,6 @@
         app:srcCompat="@drawable/ic_play"
         android:scaleType="fitXY"
         android:padding="@dimen/margSmall"
-        android:backgroundTint="@color/colorAccent"
-        />
+        android:backgroundTint="@color/colorAccent"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -19,7 +19,6 @@ public class DetailsActivity extends AppCompatActivity {
     SongModel song;
     ArrayList<SongModel> songList;
 
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
