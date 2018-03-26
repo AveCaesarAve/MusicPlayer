@@ -10,8 +10,6 @@ public class SongModel {
     private String mAuthorName;
     private int mCoverImgId;
 
-    public SongModel() {
-    }
 
     public SongModel(String songTitle, String authorName, int coverImgId) {
         mSongTitle = songTitle;

@@ -20,20 +20,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        />
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        android:theme="@style/myToolbarStyle"
-        app:titleTextAppearance="@style/textList"
-        android:background="@color/black_alpha_40"
+        android:clipToPadding="false"
+        android:paddingTop="?attr/actionBarSize"
 
         />
+
+
+
+    <include layout="@layout/my_toolbar" />
 
 </android.support.constraint.ConstraintLayout>

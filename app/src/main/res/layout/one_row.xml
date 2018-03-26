@@ -18,12 +18,13 @@
 
     <TextView
         android:id="@+id/textTitle"
+        style="@style/textList"
+        android:layout_marginTop="@dimen/margSmall"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/playArrow"
         app:layout_constraintStart_toEndOf="@+id/imageAlbumCover"
-        app:layout_constraintTop_toTopOf="@+id/imageAlbumCover"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/margSmall"
-        style="@style/textList"/>
+        app:layout_constraintTop_toTopOf="@+id/imageAlbumCover" />
 
     <TextView
         android:id="@+id/textAuthor"
@@ -40,9 +41,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_play"
-        android:background="@null"
         android:scaleType="fitXY"
         android:padding="@dimen/margSmall"
-    />
+        android:backgroundTint="@color/colorAccent"
+        />
 
 </android.support.constraint.ConstraintLayout>

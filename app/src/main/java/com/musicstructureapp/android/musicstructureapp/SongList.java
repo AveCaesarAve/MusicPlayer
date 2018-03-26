@@ -20,18 +20,18 @@ public class SongList {
     // Create a list of song
 
     private static void InitData(Context context) {
-        song.add(new SongModel("Wsciekle piesci weza 1", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
-        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_android));
+        song.add(new SongModel("Wsciekle piesci weza 1", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
+        song.add(new SongModel("Wsciekle piesci weza", "Adrian Skarpeta", R.drawable.ic_audiotrack));
 
 
     }

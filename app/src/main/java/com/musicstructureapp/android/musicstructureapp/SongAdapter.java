@@ -1,6 +1,7 @@
 package com.musicstructureapp.android.musicstructureapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
 
     private ArrayList<SongModel> songsList = new ArrayList<SongModel>();
     private Context context;
-    private SongAdapter mSongAdapter;
+
 
     public SongAdapter(Context context, ArrayList<SongModel> songs) {
         this.context = context;
@@ -29,7 +29,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
 
 
     @Override
-    public SongHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public SongHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View myView = LayoutInflater.from(context).inflate(R.layout.one_row,viewGroup,false);
         return new SongHolder(myView);
     }
@@ -44,7 +44,11 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, pos+"",Toast.LENGTH_SHORT).show();
+
+                Intent myIntent = new Intent(context, DetailsActivity.class);
+                myIntent.putExtra("EXTRA_DATA", pos);
+                context.startActivity(myIntent);
+
             }
         });
     }
@@ -54,18 +58,16 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
         return songsList.size();
     }
 
-    public class SongHolder extends RecyclerView.ViewHolder {
+    class SongHolder extends RecyclerView.ViewHolder {
         TextView songTitle, authorName;
         ImageButton btnAction;
         ImageView coverImg;
-        public SongHolder(View itemView) {
+        SongHolder(View itemView) {
             super(itemView);
-            songTitle = (TextView) itemView.findViewById(R.id.textTitle);
-            authorName = (TextView) itemView.findViewById(R.id.textAuthor);
-            btnAction = (ImageButton) itemView.findViewById(R.id.playArrow);
-            coverImg = (ImageView) itemView.findViewById(R.id.imageAlbumCover);
+            songTitle = itemView.findViewById(R.id.textTitle);
+            authorName = itemView.findViewById(R.id.textAuthor);
+            btnAction = itemView.findViewById(R.id.playArrow);
+            coverImg = itemView.findViewById(R.id.imageAlbumCover);
         }
     }
-
-
 }

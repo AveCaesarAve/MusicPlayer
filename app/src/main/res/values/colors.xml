@@ -4,9 +4,9 @@
     <color name="colorPrimaryDark">#1b1a20</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="bckground">#1b1a20</color>
+    <color name="bckground">#4F4F4F</color>
     <color name="txtColor">#ffffff</color>
 
-    <color name="black_alpha_40">#30000000</color>
+    <color name="color_alpha">#e2333333</color>
 
 </resources>

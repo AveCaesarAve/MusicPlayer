@@ -6,9 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-
-
+        <item name="android:colorControlNormal">@color/txtColor</item>
     </style>
 
     <style name="textList" parent="AppTheme">
@@ -21,12 +19,10 @@
 
     <style name="myToolbarStyle" parent="AppTheme">
         <item name="android:minHeight">?attr/actionBarSize</item>
-
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:background">@drawable/toolbar_bck</item>
+        <item name="colorAccent">@color/txtColor</item>
+
     </style>
 
 </resources>
