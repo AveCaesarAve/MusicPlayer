@@ -63,6 +63,7 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //back arrow
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get data from previous activity
@@ -125,7 +126,8 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
             }
         });
 
-    }
+    }// === END onCreate ===
+
 
     //get currentSong
     private void currentSong (int currentPos){
@@ -161,7 +163,7 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         });
     }
 
-    //seekBar current position
+    //seekBar current position and move
     public void seekBarMove() {
 
         if (mediaPlayer.isPlaying()) {
