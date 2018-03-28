@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bckground">
@@ -10,78 +10,114 @@
         android:id="@+id/coverImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:background="@drawable/rainbowbck"
+        android:padding="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_android" />
+        app:srcCompat="@drawable/ic_music_player" />
+
+    <io.gresse.hugo.vumeterlibrary.VuMeterView
+        xmlns:vumeter="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/vumeter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/paddingEqualizer"
+        android:paddingRight="@dimen/paddingEqualizer"
+        vumeter:layout_constraintBottom_toTopOf="@+id/guideline2"
+        vumeter:layout_constraintEnd_toEndOf="@+id/coverImage"
+        vumeter:layout_constraintStart_toStartOf="parent"
+        vumeter:layout_constraintTop_toTopOf="@+id/include"
+        vumeter:vumeter_backgroundColor="@color/equalizerColor"
+        vumeter:vumeter_blockNumber="15"
+        vumeter:vumeter_blockSpacing="@dimen/sizeBarEqualizer"
+        vumeter:vumeter_speed="20"
+        vumeter:vumeter_startOff="false"
+        vumeter:vumeter_stopSize="0dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.77" />
 
     <SeekBar
         android:id="@+id/seekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/titleTxt"
-
-        style="@style/textList"
-        android:layout_marginStart="16dp"
+        style="@style/basicText"
         android:layout_marginTop="@dimen/margSmall"
-        android:text="TextView"
-
+        android:textAlignment="center"
+        android:textSize="@dimen/textDetailBig"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/stopBtn"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <TextView
         android:id="@+id/authorTxt"
+        style="@style/basicText"
+        android:textAlignment="center"
+        android:textSize="@dimen/textListSmall"
 
-        style="@style/textList"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/stopBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
 
     <ImageButton
-        android:id="@+id/playBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margMed"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorAccent"
+        android:id="@+id/fowardBtn"
+        style="@style/btn"
+
+        android:layout_marginEnd="@dimen/margBig"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
-        app:srcCompat="@drawable/ic_play" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ic_fast_forward"
+        />
 
     <ImageButton
-        android:id="@+id/stopBtn"
+        android:id="@+id/backBtn"
+        style="@style/btn"
+
+        android:layout_marginStart="@dimen/margBig"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ic_back"
+       />
+
+    <ImageButton
+        android:id="@+id/playPauseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margMed"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorAccent"
-        app:layout_constraintEnd_toStartOf="@+id/playBtn"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        android:background="@drawable/btnbck_big"
+        android:padding="@dimen/margMed"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/fowardBtn"
+        app:layout_constraintStart_toEndOf="@+id/backBtn"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/ic_pause" />
 
-    <include layout="@layout/my_toolbar" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/my_toolbar" />
+
+
 </android.support.constraint.ConstraintLayout>

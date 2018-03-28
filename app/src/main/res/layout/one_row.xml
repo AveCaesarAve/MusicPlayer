@@ -1,48 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/borderColor"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="@color/color_red" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/myMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/margMed"
-    android:background="@color/bckground"
-    >
+    android:background="@color/bckground">
 
     <ImageView
         android:id="@+id/imageAlbumCover"
         android:layout_width="@dimen/pictListSize"
         android:layout_height="@dimen/pictListSize"
+        android:padding="@dimen/margSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
+        app:srcCompat="@drawable/ic_music_player" />
 
     <TextView
         android:id="@+id/textTitle"
-        style="@style/textList"
+        style="@style/basicText"
         android:layout_marginTop="@dimen/margSmall"
-        android:textSize="16sp"
+        android:textSize="@dimen/textListBig"
         android:textStyle="bold"
+
         app:layout_constraintEnd_toStartOf="@+id/playArrow"
         app:layout_constraintStart_toEndOf="@+id/imageAlbumCover"
         app:layout_constraintTop_toTopOf="@+id/imageAlbumCover" />
 
     <TextView
         android:id="@+id/textAuthor"
+        android:layout_marginBottom="@dimen/margSmall"
+        android:textSize="@dimen/textListSmall"
+        style="@style/basicText"
+
         app:layout_constraintBottom_toBottomOf="@+id/imageAlbumCover"
         app:layout_constraintEnd_toStartOf="@+id/playArrow"
-        app:layout_constraintStart_toEndOf="@+id/imageAlbumCover"
-        android:layout_marginBottom="@dimen/margSmall"
-        style="@style/textList"/>
+        app:layout_constraintStart_toEndOf="@+id/imageAlbumCover"/>
 
     <ImageButton
         android:id="@+id/playArrow"
-        android:layout_width="@dimen/pictListSize"
-        android:layout_height="@dimen/pictListSize"
+        style="@style/btn"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play"
-        android:scaleType="fitXY"
-        android:padding="@dimen/margSmall"
-        android:backgroundTint="@color/colorAccent"/>
+        app:srcCompat="@drawable/ic_play"/>
+
 
 </android.support.constraint.ConstraintLayout>
+
+<View
+android:layout_width="match_parent"
+android:layout_height="1px"
+android:background="@color/colorAccent" />
+
+</LinearLayout>
+</LinearLayout>

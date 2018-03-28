@@ -8,26 +8,26 @@ public class SongModel {
 
     private String mSongTitle;
     private String mAuthorName;
-    private int mCoverImgId;
+    private int mMySong;
 
 
-    public SongModel(String songTitle, String authorName, int coverImgId) {
+    public SongModel(String songTitle, String authorName, int mySong) {
         mSongTitle = songTitle;
         mAuthorName = authorName;
-        mCoverImgId = coverImgId;
+        mMySong = mySong;
     }
 
-    public String getmSongTitle() {
+    public String getSongTitle() {
         return mSongTitle;
     }
 
 
-    public String getmAuthorName() {
+    public String getAuthorName() {
         return mAuthorName;
     }
 
 
-    public int getImageId() {
-        return mCoverImgId;
+    public int getMyMusic() {
+        return mMySong;
     }
 }

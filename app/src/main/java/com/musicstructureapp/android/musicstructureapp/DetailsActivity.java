@@ -1,25 +1,48 @@
 package com.musicstructureapp.android.musicstructureapp;
 
-import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 
-public class DetailsActivity extends AppCompatActivity {
+import io.gresse.hugo.vumeterlibrary.VuMeterView;
 
+
+public class DetailsActivity extends AppCompatActivity implements AudioManager.OnAudioFocusChangeListener {
+
+    //data
     int position;
+    int myCurrentSong;
+    ArrayList<SongModel> songList;
+
+    //layout elements
     TextView songTitle;
     TextView songAuthor;
     ImageView songCover;
     SongModel song;
-    ArrayList<SongModel> songList;
+    ImageButton playPause;
+    ImageButton back;
+    ImageButton forward;
+    SeekBar seekBar;
 
-    @SuppressLint("SetTextI18n")
+    //media player
+    Handler handler;
+    Runnable runnable;
+    MediaPlayer mediaPlayer;
+    VuMeterView equalizerAnim;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,26 +51,188 @@ public class DetailsActivity extends AppCompatActivity {
         songTitle = findViewById(R.id.titleTxt);
         songAuthor = findViewById(R.id.authorTxt);
         songCover = findViewById(R.id.coverImage);
+        playPause = findViewById(R.id.playPauseBtn);
+        back = findViewById(R.id.backBtn);
+        forward = findViewById(R.id.fowardBtn);
+        seekBar = findViewById(R.id.seekBar);
+        equalizerAnim = findViewById(R.id.vumeter);
 
-        songList = SongList.getSong(this);
+
+        //get songs list
+        songList = SongList.getSong();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        //get data from previous activity
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
             position = bundle.getInt("EXTRA_DATA");
-            song = songList.get(position);
-
-            songTitle.setText(song.getmSongTitle());
-            songAuthor.setText(song.getmAuthorName());
-            songCover.setImageResource(song.getImageId());
+            currentSong(position);
 
         }else{
             Toast.makeText(this, "ERROR :( - I can't load this song",Toast.LENGTH_LONG).show();
         }
 
+        handler = new Handler();
+        startPlayMusic();
+        seekBarChangePosition();
+
+        // CLICK LISTENERS
+        playPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    playPause.setImageResource(R.drawable.ic_play);
+                    equalizerAnim.stop(true);
+
+                } else {
+                    mediaPlayer.start();
+                    seekBarMove();
+                    playPause.setImageResource(R.drawable.ic_pause);
+                    equalizerAnim.resume(true);
+                }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (position == 0)
+                    back.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+                if(position>0) {
+                    currentSong(--position);
+                    resetTintBtn();
+                }
+                mediaPlayer.release();
+                startPlayMusic();
+            }
+        });
+
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (position == (songList.size()-1))
+                    forward.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+                if(position<(songList.size()-1)){
+                    currentSong(++position);
+                    resetTintBtn();
+                }
+                mediaPlayer.release();
+                startPlayMusic();
+            }
+        });
+
+    }
+
+    //get currentSong
+    private void currentSong (int currentPos){
+        song = songList.get(currentPos);
+        setTitle(song.getSongTitle());
+
+        songTitle.setText(song.getSongTitle());
+        songAuthor.setText(song.getAuthorName());
+        myCurrentSong = song.getMyMusic();
+    }
+
+    //reset back and forward button background color
+    private void resetTintBtn(){
+        back.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+        forward.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+    }
+
+    //start play music
+    public void startPlayMusic(){
+        mediaPlayer = MediaPlayer.create(this, myCurrentSong);
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mediaPlayer.start();
+
+        seekBar.setMax(mediaPlayer.getDuration());
+
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                seekBar.setMax(mediaPlayer.getDuration());
+                seekBarMove();
+                mediaPlayer.start();
+            }
+        });
+    }
+
+    //seekBar current position
+    public void seekBarMove() {
+
+        if (mediaPlayer.isPlaying()) {
+            seekBar.setProgress(mediaPlayer.getCurrentPosition());
+
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    seekBarMove();
+                }
+            };
+            handler.postDelayed(runnable, 1000);
+        }
+    }
+
+    public void seekBarChangePosition(){
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
+                if (input) {
+                    mediaPlayer.seekTo(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+    }
+
+    //activity life cycle and mediaPlayer behavior
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+        mediaPlayer.release();
+        handler.removeCallbacks(runnable);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+            mediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mediaPlayer.pause();
+    }
+
+    //audiofocus changes
+    @Override
+    public void onAudioFocusChange(int focusChange) {
+
+        if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+            //AUDIOFOCUS_LOSS_TRANSIENT lost audio focus for a short amount of time.
+            //AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK continue playing sound but at a lower volume
+            mediaPlayer.pause();
+        } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+            //AUDIOFOCUS_GAIN regained focus and can resume playback.
+            mediaPlayer.start();
+        } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+            //AUDIOFOCUS_LOSS lost audio focus
+            if(mediaPlayer != null){
+                mediaPlayer.release();}
+        }
     }
 }

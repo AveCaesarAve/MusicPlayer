@@ -5,4 +5,14 @@
     <dimen name="margBig">32dp</dimen>
 
     <dimen name="pictListSize">60dp</dimen>
+
+    <dimen name="textListBig">16sp</dimen>
+    <dimen name="textListSmall">14sp</dimen>
+
+    <dimen name="textDetailBig">24sp</dimen>
+
+    <dimen name="paddingEqualizer">20dp</dimen>
+    <dimen name="sizeBarEqualizer">5dp</dimen>
+
+
 </resources>

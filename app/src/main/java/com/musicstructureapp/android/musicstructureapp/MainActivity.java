@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     SongAdapter adapter;
-    private ArrayList<SongModel> song = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        song = SongList.getSong(this);
+        //get songs list
+        ArrayList<SongModel> song = SongList.getSong();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewSong);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new SongAdapter(this, song);
         recyclerView.setAdapter(adapter);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

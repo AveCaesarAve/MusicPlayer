@@ -9,7 +9,7 @@
         <item name="android:colorControlNormal">@color/txtColor</item>
     </style>
 
-    <style name="textList" parent="AppTheme">
+    <style name="basicText" parent="AppTheme">
         <item name="android:layout_marginStart">@dimen/margSmall</item>
         <item name="android:textColor">@color/txtColor</item>
         <item name="android:text">@string/testText</item>
@@ -22,6 +22,16 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:background">@drawable/toolbar_bck</item>
         <item name="colorAccent">@color/txtColor</item>
+    </style>
+
+    <style name="btn" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:padding">@dimen/margSmall</item>
+        <item name="android:background">@drawable/btnbck</item>
+
+
 
     </style>
 </resources>
