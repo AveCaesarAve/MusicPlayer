@@ -66,9 +66,11 @@
     <TextView
         android:id="@+id/authorTxt"
         style="@style/basicText"
+        android:layout_height="0dp"
+
         android:textAlignment="center"
         android:textSize="@dimen/textListSmall"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
