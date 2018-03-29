@@ -30,14 +30,5 @@ public class SongList {
         song.add(new SongModel("California dreaming", "The mamas the papas", R.raw.the_mamas_the_papas_california_dreamin));
         song.add(new SongModel("Every breath you take", "The police", R.raw.the_police_every_breath_you_take));
         song.add(new SongModel("Stayin Alive", "Bee Gees", R.raw.bee_gees_stayin_alive));
-
-
-
-
-
-
     }
 }
-
-
-

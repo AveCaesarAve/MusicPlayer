@@ -22,7 +22,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
     private ArrayList<SongModel> songsList;
     private Context context;
 
-
     public SongAdapter(Context context, ArrayList<SongModel> songs) {
         this.context = context;
         this.songsList = songs;
@@ -31,7 +30,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
     //inflate one_row layout
     @Override
     public SongHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View myView = LayoutInflater.from(context).inflate(R.layout.one_row,viewGroup,false);
+        View myView = LayoutInflater.from(context).inflate(R.layout.one_row, viewGroup, false);
         return new SongHolder(myView);
     }
 
@@ -66,6 +65,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
         TextView songTitle, authorName;
         ImageButton btnAction;
         View colorBar;
+
         SongHolder(View itemView) {
             super(itemView);
             songTitle = itemView.findViewById(R.id.textTitle);
@@ -74,5 +74,4 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
             colorBar = itemView.findViewById(R.id.borderColor);
         }
     }
-
 }

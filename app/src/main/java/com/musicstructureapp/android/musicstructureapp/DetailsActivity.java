@@ -1,5 +1,6 @@
 package com.musicstructureapp.android.musicstructureapp;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -7,18 +8,18 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.util.ArrayList;
 
 import io.gresse.hugo.vumeterlibrary.VuMeterView;
-
 
 public class DetailsActivity extends AppCompatActivity implements AudioManager.OnAudioFocusChangeListener {
 
@@ -36,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
     ImageButton back;
     ImageButton forward;
     SeekBar seekBar;
+    Button backToList;
 
     //media player
     Handler handler;
@@ -56,7 +58,7 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         forward = findViewById(R.id.fowardBtn);
         seekBar = findViewById(R.id.seekBar);
         equalizerAnim = findViewById(R.id.vumeter);
-
+        backToList = findViewById(R.id.backToListBtn);
 
         //get songs list
         songList = SongList.getSong();
@@ -68,12 +70,12 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
 
         //get data from previous activity
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
+        if (bundle != null) {
             position = bundle.getInt("EXTRA_DATA");
             currentSong(position);
 
-        }else{
-            Toast.makeText(this, "ERROR :( - I can't load this song",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "ERROR :( - I can't load this song", Toast.LENGTH_LONG).show();
         }
 
         handler = new Handler();
@@ -103,7 +105,7 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
             public void onClick(View v) {
                 if (position == 0)
                     back.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
-                if(position>0) {
+                if (position > 0) {
                     currentSong(--position);
                     resetTintBtn();
                 }
@@ -115,9 +117,9 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (position == (songList.size()-1))
+                if (position == (songList.size() - 1))
                     forward.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
-                if(position<(songList.size()-1)){
+                if (position < (songList.size() - 1)) {
                     currentSong(++position);
                     resetTintBtn();
                 }
@@ -126,11 +128,19 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
             }
         });
 
+        backToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.release();
+                Intent myIntent = new Intent(DetailsActivity.this, MainActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
     }// === END onCreate ===
 
-
     //get currentSong
-    private void currentSong (int currentPos){
+    private void currentSong(int currentPos) {
         song = songList.get(currentPos);
         setTitle(song.getSongTitle());
 
@@ -140,13 +150,13 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
     }
 
     //reset back and forward button background color
-    private void resetTintBtn(){
+    private void resetTintBtn() {
         back.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
         forward.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
     }
 
     //start play music
-    public void startPlayMusic(){
+    public void startPlayMusic() {
         mediaPlayer = MediaPlayer.create(this, myCurrentSong);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.start();
@@ -165,21 +175,24 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
 
     //seekBar current position and move
     public void seekBarMove() {
+        try {
+            if (mediaPlayer.isPlaying()) {
+                seekBar.setProgress(mediaPlayer.getCurrentPosition());
 
-        if (mediaPlayer.isPlaying()) {
-            seekBar.setProgress(mediaPlayer.getCurrentPosition());
-
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    seekBarMove();
-                }
-            };
-            handler.postDelayed(runnable, 1000);
+                runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        seekBarMove();
+                    }
+                };
+                handler.postDelayed(runnable, 1000);
+            }
+        } catch (Exception e) {
+            Log.v("catch exception", "success");
         }
     }
 
-    public void seekBarChangePosition(){
+    public void seekBarChangePosition() {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
@@ -207,16 +220,11 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         handler.removeCallbacks(runnable);
     }
 
+    //release MediaPlayer when come back to list view by arrow
     @Override
-    protected void onResume() {
-        super.onResume();
-            mediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mediaPlayer.pause();
+    public void onBackPressed() {
+        mediaPlayer.release();
+        super.onBackPressed();
     }
 
     //audiofocus changes
@@ -233,8 +241,9 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
             mediaPlayer.start();
         } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
             //AUDIOFOCUS_LOSS lost audio focus
-            if(mediaPlayer != null){
-                mediaPlayer.release();}
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
         }
     }
 }
