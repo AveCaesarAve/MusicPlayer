@@ -2,17 +2,20 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
 
     <ImageView
         android:id="@+id/coverImage"
+        android:contentDescription="@string/cover"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/ios7_musicicon"
-        android:padding="100dp"
+        android:paddingTop="0dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:paddingBottom="100dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

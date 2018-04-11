@@ -9,20 +9,16 @@
     android:fitsSystemWindows="true"
     tools:context="com.musicstructureapp.android.musicstructureapp.MainActivity">
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listSong"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingTop="?attr/actionBarSize"
+        android:paddingTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         />
 
-
-    <!--<include layout="@layout/my_toolbar" />-->
 </android.support.constraint.ConstraintLayout>
