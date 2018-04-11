@@ -6,10 +6,9 @@ public class SongModel {
     private String mAuthorName;
     private int mMySong;
 
-    public SongModel(String songTitle, String authorName, int mySong) {
+    public SongModel(String songTitle, String authorName) {
         mSongTitle = songTitle;
         mAuthorName = authorName;
-        mMySong = mySong;
     }
 
     public String getSongTitle() {
@@ -18,9 +17,5 @@ public class SongModel {
 
     public String getAuthorName() {
         return mAuthorName;
-    }
-
-    public int getMyMusic() {
-        return mMySong;
     }
 }

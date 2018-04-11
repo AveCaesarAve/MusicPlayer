@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -18,17 +17,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get songs list
         ArrayList<SongModel> song = SongList.getSong();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewSong);
+        RecyclerView recyclerView = findViewById(R.id.listSong);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         adapter = new SongAdapter(this, song);
         recyclerView.setAdapter(adapter);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 }

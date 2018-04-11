@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FF5722</item>
         <item name="colorPrimaryDark">#E64A19</item>
@@ -15,14 +15,7 @@
         <item name="android:layout_width">0dp</item>
     </style>
 
-    <style name="myToolbarStyle" parent="AppTheme">
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:background">@drawable/toolbar_bck</item>
-        <item name="colorAccent">#FFFFFF</item>
-    </style>
-
-    <style name="btn" parent="AppTheme">
+     <style name="btn" parent="AppTheme">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:scaleType">fitXY</item>
