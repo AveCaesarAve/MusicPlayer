@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bckground">
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/coverImage"
@@ -19,38 +18,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_music_player" />
 
-    <io.gresse.hugo.vumeterlibrary.VuMeterView
-        xmlns:vumeter="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/vumeter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:paddingLeft="@dimen/paddingEqualizer"
-        android:paddingRight="@dimen/paddingEqualizer"
-        vumeter:layout_constraintBottom_toTopOf="@+id/guideline2"
-        vumeter:layout_constraintEnd_toEndOf="@+id/coverImage"
-        vumeter:layout_constraintStart_toStartOf="parent"
-        vumeter:layout_constraintTop_toTopOf="@+id/include"
-        vumeter:vumeter_backgroundColor="@color/equalizerColor"
-        vumeter:vumeter_blockNumber="15"
-        vumeter:vumeter_blockSpacing="@dimen/sizeBarEqualizer"
-        vumeter:vumeter_speed="20"
-        vumeter:vumeter_startOff="false"
-        vumeter:vumeter_stopSize="0dp" />
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.77" />
-
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/titleTxt"
@@ -59,10 +32,9 @@
         android:textAlignment="center"
         android:textSize="@dimen/textDetailBig"
         android:textStyle="bold"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/authorTxt"
@@ -79,8 +51,8 @@
     <ImageButton
         android:id="@+id/fowardBtn"
         style="@style/btn"
-
         android:layout_marginEnd="@dimen/margBig"
+        android:contentDescription="@string/ForwardButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
@@ -89,8 +61,8 @@
     <ImageButton
         android:id="@+id/backBtn"
         style="@style/btn"
-
         android:layout_marginStart="@dimen/margBig"
+        android:contentDescription="@string/BackButton"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
@@ -101,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btnbck_big"
+        android:contentDescription="@string/PlayPauseButton"
         android:padding="@dimen/margMed"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"

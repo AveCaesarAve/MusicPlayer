@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MusicPlayer</string>
-    <string name="testText">DisplayTestText</string>
-    <string name="back">BACK</string>
+    <string name="Text">ShowSampleText</string>
+    <string name="back">Back</string>
+    <string name="PlayPauseButton">Button Play Pause</string>
+    <string name="BackButton">Button Back</string>
+    <string name="ForwardButton">Button Forward</string>
 </resources>

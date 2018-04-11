@@ -17,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/margMed"
-    android:background="@color/bckground">
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/imageAlbumCover"

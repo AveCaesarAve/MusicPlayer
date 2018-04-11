@@ -8,18 +8,14 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-import io.gresse.hugo.vumeterlibrary.VuMeterView;
 
 public class DetailsActivity extends AppCompatActivity implements AudioManager.OnAudioFocusChangeListener {
 
@@ -36,14 +32,12 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
     ImageButton playPause;
     ImageButton back;
     ImageButton forward;
-    SeekBar seekBar;
     Button backToList;
 
     //media player
     Handler handler;
     Runnable runnable;
     MediaPlayer mediaPlayer;
-    VuMeterView equalizerAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +50,6 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         playPause = findViewById(R.id.playPauseBtn);
         back = findViewById(R.id.backBtn);
         forward = findViewById(R.id.fowardBtn);
-        seekBar = findViewById(R.id.seekBar);
-        equalizerAnim = findViewById(R.id.vumeter);
         backToList = findViewById(R.id.backToListBtn);
 
         //get songs list
@@ -80,7 +72,6 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
 
         handler = new Handler();
         startPlayMusic();
-        seekBarChangePosition();
 
         // CLICK LISTENERS
         playPause.setOnClickListener(new View.OnClickListener() {
@@ -89,14 +80,11 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     playPause.setImageResource(R.drawable.ic_play);
-                    equalizerAnim.stop(true);
 
                 } else {
                     mediaPlayer.start();
-                    seekBarMove();
                     playPause.setImageResource(R.drawable.ic_pause);
-                    equalizerAnim.resume(true);
-                }
+                    }
             }
         });
 
@@ -161,52 +149,10 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.start();
 
-        seekBar.setMax(mediaPlayer.getDuration());
-
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 
             public void onPrepared(MediaPlayer mediaPlayer) {
-                seekBar.setMax(mediaPlayer.getDuration());
-                seekBarMove();
-                mediaPlayer.start();
-            }
-        });
-    }
-
-    //seekBar current position and move
-    public void seekBarMove() {
-        try {
-            if (mediaPlayer.isPlaying()) {
-                seekBar.setProgress(mediaPlayer.getCurrentPosition());
-
-                runnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        seekBarMove();
-                    }
-                };
-                handler.postDelayed(runnable, 1000);
-            }
-        } catch (Exception e) {
-            Log.v("catch exception", "success");
-        }
-    }
-
-    public void seekBarChangePosition() {
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean input) {
-                if (input) {
-                    mediaPlayer.seekTo(progress);
-                }
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+               mediaPlayer.start();
             }
         });
     }
