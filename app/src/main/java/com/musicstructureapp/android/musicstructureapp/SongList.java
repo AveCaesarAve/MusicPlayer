@@ -2,10 +2,6 @@ package com.musicstructureapp.android.musicstructureapp;
 
 import java.util.ArrayList;
 
-/**
- * Created by narcy on 19.03.2018.
- */
-
 public class SongList {
 
     private static ArrayList<SongModel> song = new ArrayList<>();

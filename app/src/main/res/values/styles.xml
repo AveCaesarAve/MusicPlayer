@@ -27,7 +27,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:scaleType">fitXY</item>
         <item name="android:padding">@dimen/margSmall</item>
-        <item name="android:background">@drawable/btnbck</item>
+        <item name="android:background">@drawable/buttonbackinside</item>
 
     </style>
 </resources>

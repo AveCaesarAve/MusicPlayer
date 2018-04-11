@@ -9,13 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.musicstructureapp.android.musicstructureapp.helperClass.ChangeColourOfBar;
 
 import java.util.ArrayList;
-
-/**
- * Created by narcy on 19.03.2018.
- */
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
 

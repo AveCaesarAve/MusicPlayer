@@ -26,7 +26,8 @@
         android:padding="@dimen/margSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_music_player" />
+        android:background="@drawable/ios7_musicicon"
+        />
 
     <TextView
         android:id="@+id/textTitle"
@@ -54,7 +55,7 @@
         style="@style/btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play"/>
+        app:srcCompat="@drawable/iconplay"/>
 
 
 </android.support.constraint.ConstraintLayout>

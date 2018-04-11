@@ -10,13 +10,13 @@
         android:id="@+id/coverImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/rainbowbck"
+        android:background="@drawable/ios7_musicicon"
         android:padding="100dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_music_player" />
+        />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -56,7 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/ic_fast_forward" />
+        app:srcCompat="@drawable/iconforward" />
 
     <ImageButton
         android:id="@+id/backBtn"
@@ -66,13 +66,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/ic_back" />
+        app:srcCompat="@drawable/iconback" />
 
     <ImageButton
         android:id="@+id/playPauseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btnbck_big"
+        android:background="@drawable/buttonbackoutside"
         android:contentDescription="@string/PlayPauseButton"
         android:padding="@dimen/margMed"
         android:scaleType="fitXY"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toStartOf="@+id/fowardBtn"
         app:layout_constraintStart_toEndOf="@+id/backBtn"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/ic_pause" />
+        app:srcCompat="@drawable/iconpause" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"

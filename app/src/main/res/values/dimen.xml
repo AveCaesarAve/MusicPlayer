@@ -14,5 +14,5 @@
     <dimen name="paddingEqualizer">20dp</dimen>
     <dimen name="sizeBarEqualizer">5dp</dimen>
 
-    <dimen name="backBtnSize">30dp</dimen>
+    <dimen name="backBtnSize">40dp</dimen>
 </resources>

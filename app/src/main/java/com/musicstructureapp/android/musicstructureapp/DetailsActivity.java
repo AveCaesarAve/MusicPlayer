@@ -79,11 +79,11 @@ public class DetailsActivity extends AppCompatActivity implements AudioManager.O
             public void onClick(View v) {
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
-                    playPause.setImageResource(R.drawable.ic_play);
+                    playPause.setImageResource(R.drawable.iconplay);
 
                 } else {
                     mediaPlayer.start();
-                    playPause.setImageResource(R.drawable.ic_pause);
+                    playPause.setImageResource(R.drawable.iconpause);
                     }
             }
         });
