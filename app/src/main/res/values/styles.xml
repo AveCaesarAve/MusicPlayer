@@ -3,15 +3,15 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorControlNormal">@color/txtColor</item>
+        <item name="colorPrimary">#FF5722</item>
+        <item name="colorPrimaryDark">#E64A19</item>
+        <item name="colorAccent">#9E9E9E</item>
+        <item name="android:colorControlNormal">#FFFFFF</item>
     </style>
 
     <style name="basicText" parent="AppTheme">
         <item name="android:layout_marginStart">@dimen/margSmall</item>
-        <item name="android:textColor">@color/txtColor</item>
+        <item name="android:textColor">#212121</item>
         <item name="android:text">@string/testText</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">0dp</item>
@@ -21,7 +21,7 @@
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:background">@drawable/toolbar_bck</item>
-        <item name="colorAccent">@color/txtColor</item>
+        <item name="colorAccent">#FFFFFF</item>
     </style>
 
     <style name="btn" parent="AppTheme">

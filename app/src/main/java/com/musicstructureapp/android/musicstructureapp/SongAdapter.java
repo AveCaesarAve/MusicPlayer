@@ -50,9 +50,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
             }
         });
 
-        //I give different colors to stripes in List - only decoration
-        ChangeColourOfBar.choseColour(context, songHolder.colorBar);
-    }
+        }
 
     //how many elements does my list have
     @Override
@@ -71,7 +69,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongHolder> {
             songTitle = itemView.findViewById(R.id.textTitle);
             authorName = itemView.findViewById(R.id.textAuthor);
             btnAction = itemView.findViewById(R.id.playArrow);
-            colorBar = itemView.findViewById(R.id.borderColor);
-        }
+            }
     }
 }

@@ -1,9 +1,5 @@
 package com.musicstructureapp.android.musicstructureapp;
 
-/**
- * Created by narcy on 19.03.2018.
- */
-
 public class SongModel {
 
     private String mSongTitle;

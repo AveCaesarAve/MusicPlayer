@@ -5,26 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.musicstructureapp.android.musicstructureapp.MainActivity"
     android:background="@color/bckground"
     android:fitsSystemWindows="true"
-    >
+    tools:context="com.musicstructureapp.android.musicstructureapp.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewSong"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="?attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        android:clipToPadding="false"
-        android:paddingTop="?attr/actionBarSize"
-
         />
-
 
 
     <include layout="@layout/my_toolbar" />

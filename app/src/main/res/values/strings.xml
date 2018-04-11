@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Music Structure App</string>
-    <string name="testText">Test text display</string>
+    <string name="app_name">MusicPlayer</string>
+    <string name="testText">DisplayTestText</string>
     <string name="back">BACK</string>
 </resources>
